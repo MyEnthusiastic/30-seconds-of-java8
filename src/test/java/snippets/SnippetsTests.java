@@ -332,6 +332,7 @@ public class SnippetsTests {
         expected.put("c", 3);
 
         Map<String, Integer> picked = Snippets.pick(obj, new String[]{"a", "c"});
+        assertThat(picked.size() == obj.size());
         assertThat(picked).containsAllEntriesOf(expected);
     }
 
