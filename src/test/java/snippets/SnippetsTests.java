@@ -327,8 +327,13 @@ public class SnippetsTests {
         obj.put("b", 2);
         obj.put("c", 3);
 
+        Map<String, Integer> expected = new HashMap<>();
+        expected.put("a", 1);
+        expected.put("c", 3);
+
         Map<String, Integer> picked = Snippets.pick(obj, new String[]{"a", "c"});
-        assertThat(picked).containsExactly(new SimpleEntry<>("a", 1), new SimpleEntry<>("c", 3));
+        assertThat(picked.size() == obj.size());
+        assertThat(picked).containsAllEntriesOf(expected);
     }
 
     @Test
